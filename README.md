@@ -12,15 +12,17 @@ docker run -p 8080:80 bblfsh/dashboard -bblfsh-addr <bblfsh-server-addr>
 If you don't have a bblfsh server running you can execute the dashboard and the server using the following command:
 
 ```sh
-docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/server
+docker run --privileged -d -p 9432:9432 --name bblfsh bblfsh/bblfshd
 docker run -p 8080:80 --link bblfsh bblfsh/dashboard -bblfsh-addr bblfsh:9432
 ```
 
-Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server.
+Please read the [getting started](https://doc.bblf.sh/user/getting-started.html) guide, to learn more about how to use and deploy a bblfsh server, install drivers, etc.
 
 If don't want to run **dashboard** using our *Docker* image you can download a binary from [releases](https://github.com/bblfsh/dashboard/releases) page.
 
 ## Development
+
+The dashboard is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
 
 The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
 
