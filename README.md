@@ -24,11 +24,17 @@ If don't want to run **dashboard** using our *Docker* image you can download a b
 
 The dashboard is a Golang application, so in order for all further insturctions to work please make sure it's under `$GOPATH` in your filesystem.
 
-The dashboard uses an intermediate API that connects to the bblfsh server and serves the dashboard front assets.
+### Dependencies
 
-Every time you change any source of the front assets, it is needed to regenerate the `server/asset/asset.go` containing the static files of the site.
+ - Golang 1.9
+ - Node 8.x
+ - Yarn 1.x
 
-It can be done running
+The dashboard consits of a web server, serving static assets and an intermediate API that connects to the bblfsh server.
+
+Every time you change any assets in `./public` or `./src`, you needed to regenerate the `server/asset/asset.go` containing all static files of the frontend.
+
+It can be done with:
 ```sh
 make assets
 ```
@@ -39,9 +45,9 @@ To run it locally you can run:
 ```sh
 make serve
 ```
-(Do it every time you modify something in the sources to re-generate the `server/asset/asset.go` file, the dashboard api, and to serve the updated dashboard itself)
+It will take care of re-generateing the assets file, building dashboard api, and to serving the updated dashboard itself.
 
-And access the dashboard through http://localhost:9999
+Dashboard will be available on http://localhost:9999
 
 ## License
 
